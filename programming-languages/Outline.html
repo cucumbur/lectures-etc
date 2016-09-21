@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.8 (453749)"/><meta name="author" content="Rick Sheahan"/><meta name="created" content="2016-09-18 23:59:47 +0000"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2016-09-21 00:33:37 +0000"/><title>Programming Languages microlecture</title></head><body>
+<ul>
+<li>Today I’m going to talk about programming languages, and how to make choices about which ones to use based on what you plan to do. Since programming is the basically synonymous with development, it’s an important choice.</li>
+<li>Why does it matter what language you choose?
+<ul>
+<li>"The diversity of languages is not a diversity of signs and sounds but a diversity of views of the world” (Von Humboldt)
+<ul>
+<li>(the choice of a programming language is more than an aesthetic decision)</li>
+<li>even languages with a similar syntax can serve entirely different purposes</li>
+</ul>
+</li>
+<li>Technical considerations
+<ul>
+<li>The platforms you’re targeting may require a specific language (i.e. Swift or Objective-C for native iOS development)</li>
+<li>The platform you are targeting for may be hard to compile to/run on for many languages (i.e. microcontrollers can run C code, but probably not a JVM or Node)</li>
+<li>You may need low-level features not accessible in a higher-level language (i.e. writing drivers for embedded devices in C or Assembly)</li>
+<li>Languages differ dramatically in speed, a resource intensive project may require a generally faster language</li>
+</ul>
+</li>
+<li>Practical considerations
+<ul>
+<li>You may want certain high-level features and existing libraries so you don’t have to reinvent the wheel</li>
+<li>You already know a language, so you don’t have to learn anything new</li>
+<li>Using a de facto industry/community standard language means more people will be able to work on/contribute to a commercial/open source project</li>
+<li>The documentation of languages can range from nonexistent to transcendent</li>
+<li>Good tooling can be important if you’d rather not spend tons of time figuring everything out</li>
+<li>A language may have more robust features for enterprise-scale codebases (error-handling, etc)</li>
+<li>Quick prototypes may warrant a language that is lighter and easier to iterate rapidly, large projects may benefit from languages with more structure and maintanibility</li>
+<li>The community surrounding a language is important</li>
+</ul>
+</li>
+<li>Different programming languages foster different ways of thinking about problems
+<ul>
+<li>“[Programming languages] powerfully condition all our thinking about social problems and processes. Human beings … are very much at the mercy of the particular language which has become the medium of expression for their [codebase]” (Sapir…. paraphrased)</li>
+<li>Examples
+<ul>
+<li>Finding a path between two nodes
+<ul>
+<li>Python: </li>
+<li>
+<div style="box-sizing: border-box; font-family: Menlo, Monaco, &quot;Courier New&quot;, monospace; overflow-x: auto; color: rgb(81, 81, 81); font-size: 14.4px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><code style="box-sizing: border-box; font-family: Menlo, Monaco, &quot;Courier New&quot;, monospace; padding: 0px; font-size: 14.4px; color: inherit; background-color: transparent; border-radius: 3px;"><span style="box-sizing: border-box; color: rgb(0, 102, 153);">def</span> <span style="box-sizing: border-box; color: rgb(204, 0, 255);">dfs</span><span style="box-sizing: border-box;">(</span><span style="box-sizing: border-box;">graph</span><span style="box-sizing: border-box;">,</span> <span style="box-sizing: border-box;">start</span><span style="box-sizing: border-box;">):</span><br/>
+    <span style="box-sizing: border-box;">visited</span><span style="box-sizing: border-box;">,</span> <span style="box-sizing: border-box;">stack</span> <span style="box-sizing: border-box; color: rgb(85, 85, 85);">=</span> <span style="box-sizing: border-box; color: rgb(51, 102, 102);">set</span><span style="box-sizing: border-box;">(),</span> <span style="box-sizing: border-box;">[</span><span style="box-sizing: border-box;">start</span><span style="box-sizing: border-box;">]</span><br/>
+    <span style="box-sizing: border-box; color: rgb(0, 102, 153);">while</span> <span style="box-sizing: border-box;">stack</span><span style="box-sizing: border-box;">:</span><br/>
+        <span style="box-sizing: border-box;">vertex</span> <span style="box-sizing: border-box; color: rgb(85, 85, 85);">=</span> <span style="box-sizing: border-box;">stack</span><span style="box-sizing: border-box; color: rgb(85, 85, 85);">.</span><span style="box-sizing: border-box;">pop</span><span style="box-sizing: border-box;">()</span><br/>
+        <span style="box-sizing: border-box; color: rgb(0, 102, 153);">if</span> <span style="box-sizing: border-box;">vertex</span> <span style="box-sizing: border-box; color: rgb(0, 0, 0);">not</span> <span style="box-sizing: border-box; color: rgb(0, 0, 0);">in</span> <span style="box-sizing: border-box;">visited</span><span style="box-sizing: border-box;">:</span><br/>
+            <span style="box-sizing: border-box;">visited</span><span style="box-sizing: border-box; color: rgb(85, 85, 85);">.</span><span style="box-sizing: border-box;">add</span><span style="box-sizing: border-box;">(</span><span style="box-sizing: border-box;">vertex</span><span style="box-sizing: border-box;">)</span><br/>
+            <span style="box-sizing: border-box;">stack</span><span style="box-sizing: border-box; color: rgb(85, 85, 85);">.</span><span style="box-sizing: border-box;">extend</span><span style="box-sizing: border-box;">(</span><span style="box-sizing: border-box;">graph</span><span style="box-sizing: border-box;">[</span><span style="box-sizing: border-box;">vertex</span><span style="box-sizing: border-box;">]</span> <span style="box-sizing: border-box; color: rgb(85, 85, 85);">-</span> <span style="box-sizing: border-box;">visited</span><span style="box-sizing: border-box;">)</span><br/>
+    <span style="box-sizing: border-box; color: rgb(0, 102, 153);">return</span> <span style="box-sizing: border-box;">visited</span></code></div>
+</li>
+<li>(via <a rev="en_rl_minimal" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/</a>)</li>
+<li><span style="font-family: Menlo;">Prolog:</span>
+<div style="font-family: &quot;lucida console&quot;, courier, monospace; font-size: 12.8px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: -webkit-left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">path(X,Y).<br/>
+path(X,Y) :- connected(X,Z),<br/>
+             path(Z,Y).</div>
+</li>
+<li><span style="color: rgb(51, 51, 51);">(via </span><a rev="en_rl_minimal" href="http://cs.union.edu/~striegnk/courses/esslli04prolog/index.php">http://cs.union.edu/~striegnk/courses/esslli04prolog/index.php</a>)</li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Quicksort</span>
+<ul>
+<li><span style="color: rgb(68, 68, 68);">C++</span></li>
+<li>
+<div style="padding: 0.3em; font-family: monospace; overflow: auto; background: rgb(240, 240, 240); border: 1px solid rgb(221, 221, 221); color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">template &lt;typename T&gt;<br/>
+void qsort (T *result, T *list, int n)<br/>
+{<br/>
+    if (n == 0) return;<br/>
+    T *smallerList, *largerList;<br/>
+    smallerList = new T[n];<br/>
+    largerList = new T[n];     <br/>
+    T pivot = list[0];<br/>
+    int numSmaller=0, numLarger=0;     <br/>
+    for (int i = 1; i &lt; n; i++)<br/>
+        if (list[i] &lt; pivot)<br/>
+            smallerList[numSmaller++] = list[i];<br/>
+        else <br/>
+            largerList[numLarger++] = list[i];<br/>
+   <br/>
+    qsort(smallerList,smallerList,numSmaller); <br/>
+    qsort(largerList,largerList,numLarger);<br/>
+   <br/>
+    int pos = 0;       <br/>
+    for ( int i = 0; i &lt; numSmaller; i++)<br/>
+        result[pos++] = smallerList[i];<br/>
+   <br/>
+    result[pos++] = pivot;<br/>
+   <br/>
+    for ( int i = 0; i &lt; numLarger; i++)<br/>
+        result[pos++] = largerList[i];<br/>
+   <br/>
+    delete [] smallerList;<br/>
+    delete [] largerList;<br/>
+};</div>
+</li>
+<li>Haskell</li>
+<li>
+<div style="padding: 0px; font-family: monospace; overflow: auto; background: none rgb(255, 255, 255); border: 0px none white; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: medium; vertical-align: top; color: rgb(0, 0, 0); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"> qsort <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">::</span> <span style="padding: 0px; color: green; font-weight: normal !important;">(</span><span style="padding: 0px; color: rgb(204, 204, 0); font-weight: bold;">Ord</span> a<span style="padding: 0px; color: green; font-weight: normal !important;">)</span> <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">=&gt;</span> <span style="padding: 0px; color: green; font-weight: normal !important;">[</span>a<span style="padding: 0px; color: green; font-weight: normal !important;">]</span> <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">-&gt;</span> <span style="padding: 0px; color: green; font-weight: normal !important;">[</span>a<span style="padding: 0px; color: green; font-weight: normal !important;">]</span><br/>
+ qsort <span style="padding: 0px; color: green; font-weight: normal !important;">[</span><span style="padding: 0px; color: green; font-weight: normal !important;">]</span>     <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">=</span> <span style="padding: 0px; color: green; font-weight: normal !important;">[</span><span style="padding: 0px; color: green; font-weight: normal !important;">]</span><br/>
+ qsort <span style="padding: 0px; color: green; font-weight: normal !important;">(</span>x:xs<span style="padding: 0px; color: green; font-weight: normal !important;">)</span> <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">=</span> qsort less <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">++</span> <span style="padding: 0px; color: green; font-weight: normal !important;">[</span>x<span style="padding: 0px; color: green; font-weight: normal !important;">]</span> <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">++</span> qsort more<br/>
+     <span style="padding: 0px; font-weight: bold; color: rgb(0, 102, 204);">where</span> less <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">=</span> <span style="padding: 0px; color: rgb(85, 68, 136) !important; font-weight: bold;">filter</span> <span style="padding: 0px; color: green; font-weight: normal !important;">(</span><span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">&lt;</span>x<span style="padding: 0px; color: green; font-weight: normal !important;">)</span>  xs<br/>
+           more <span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">=</span> <span style="padding: 0px; color: rgb(85, 68, 136) !important; font-weight: bold;">filter</span> <span style="padding: 0px; color: green; font-weight: normal !important;">(</span><span style="padding: 0px; color: rgb(51, 153, 51); font-weight: bold;">&gt;=</span>x<span style="padding: 0px; color: green; font-weight: normal !important;">)</span> xs</div>
+</li>
+<li>(via <a rev="en_rl_minimal" href="https://wiki.haskell.org/Why_Haskell_matters">https://wiki.haskell.org/Why_Haskell_matters</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Explanation of common language features/paradigms</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Static vs Dynamic typing</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Static: stalwart of many more traditional/enterprise languages, lengthier code but with more assurances about what your code represents</span></li>
+<li><span style="color: rgb(51, 51, 51);">Dynamic: generally more attractive and lean syntax, lack of type checking can introduce headaches for debugging and code collaboration</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Imperative vs Functional (or, technically, declarative)</span>
+<ul>
+<li><font color="#333333">Imperative: the “standard” for most programming. everyone is trained to think of writing algorithms and programs in this way. they can be very efficient. You give commands to the machine, hence imperative </font></li>
+<li><span style="color: rgb(51, 51, 51);">Functional: you describe the way your program works, not give a list of commands. The same inputs always produce the same outputs </span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">High Level vs Low Level</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">High level: abstractions that remove the need to do a lo or minor, repetative tasks. garbage collection, </span></li>
+<li><span style="color: rgb(51, 51, 51);">Low level:closer access to the nitty gritty </span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Interpreted vs Compiled</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Interpreted: you use the source code itself every time you run it, and the interpreter figures out what to do </span></li>
+<li><span style="color: rgb(51, 51, 51);">Compiled: when you have an executable, binary file compiled for only one type or computer. </span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Object Oriented</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Important programming paradigm that solves a lot of problems</span></li>
+<li><span style="color: rgb(51, 51, 51);">but people also try and make any problem fit into the OOP way of thinking, and this doesnnt really work</span></li>
+<li><span style="color: rgb(51, 51, 51);">"</span><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); float: none;">The problem with object-oriented languages is they've got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.” (Joe Armstrong)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Languages</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Python</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">"high-level, general-purpose, interpreted, dynamic"</span></li>
+<li><span style="color: rgb(51, 51, 51);">New programmers</span></li>
+<li><font color="#333333">Scientific computing, mathematics, "data science” and statistics</font></li>
+<li><span style="color: rgb(51, 51, 51);">Web backend</span></li>
+<li><span style="color: rgb(51, 51, 51);">Prototyping</span></li>
+<li><span style="color: rgb(51, 51, 51);">CLI tools</span></li>
+<li><span style="color: rgb(51, 51, 51);">All around utility language</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">JavaScript</span>
+<ul>
+<li>high level, Untyped/dynamic, interpreted</li>
+<li>THE web standard
+<ul>
+<li>front end scripting</li>
+<li>server side scripting (node.js)</li>
+</ul>
+</li>
+<li>node.js for backends in general - APIs + etc</li>
+<li>rapid prototyping / development</li>
+<li>very prominent community on the web and in programmer circles, good place to get involved in a community</li>
+<li><span style="color: rgb(51, 51, 51);">has libraries to accomplish almost anything you could need</span></li>
+<li><span style="color: rgb(51, 51, 51);">generally not a great choice for many larger projects, as it can be hard to maintain because of not having types</span></li>
+<li><span style="color: rgb(51, 51, 51);">also, the community moves so fast that all your tools and frameworks are replaced by new ones constantly, and it can be a huge hassle</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">C</span>
+<ul>
+<li><font color="#333333">“low-level"</font></li>
+<li><font color="#333333">Static, imperative </font></li>
+<li><span style="color: rgb(51, 51, 51);">the point of comparison for all modern programming </span><font color="#333333">languages</font></li>
+<li><span style="color: rgb(51, 51, 51);">easy to get yourself into trouble (see CS241)  - dont use lightly</span></li>
+<li><span style="color: rgb(51, 51, 51);">low level access to memory and system level functionality</span></li>
+<li><span style="color: rgb(51, 51, 51);">no OO</span></li>
+<li><span style="color: rgb(51, 51, 51);">Embedded devices</span></li>
+<li><span style="color: rgb(51, 51, 51);">Operating systems</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">C++</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Older Brother of c</span></li>
+<li><span style="color: rgb(51, 51, 51);">Imperative and static like c but with OOP</span></li>
+<li><span style="color: rgb(51, 51, 51);">Great for high performance apps like games and graphics software </span></li>
+<li><span style="color: rgb(51, 51, 51);">It can be difficult to use</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Java</span>
+<ul>
+<li><font color="#333333">Object oriented, static, imperative </font></li>
+<li>JVM</li>
+<li>Works anywhere </li>
+<li><span style="color: rgb(51, 51, 51);">Android development</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">C#</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Java, by Microsoft</span></li>
+<li><span style="color: rgb(51, 51, 51);">A very modern OOP language</span></li>
+<li><span style="color: rgb(51, 51, 51);">If you want to develop for Windows, this is your best choice</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Ruby</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">dynamic scripting language</span></li>
+<li><span style="color: rgb(51, 51, 51);">Ruby used to be as big for web development JavaScript, but its fading in popularity</span></li>
+<li><span style="color: rgb(51, 51, 51);">nonetheless, it has a great syntax</span></li>
+<li><span style="color: rgb(51, 51, 51);">Still has one of the most widely used web frameworks, Ruby on Rails</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">PHP</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">Not really used anymore, not a whole lot of reason to use this sla</span></li>
+<li><span style="color: rgb(51, 51, 51);">But, a lot of older codebases, especially open source ones, might use this. (like wordpress)</span></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Slightly esoteric: Haskell, Prolog, Lisp, Erlang</span>
+<ul>
+<li><span style="color: rgb(51, 51, 51);">A little more academic or niche, but they serve great purposes</span></li>
+<li><font color="#333333">Haskell lets you think really logical about your programs. It’s great for developing compilers and interpreters and programming languages.</font></li>
+<li><span style="color: rgb(51, 51, 51);">Prolog is a bizarre logic programming language. All you have to do is describe the relationships on your data, and it will run the algorithms for you</span></li>
+<li><font color="#333333">Lisp is like… the ultimate programming language. Everyone who knows it seems to possess magical capabilities</font></li>
+<li><font color="#333333">Erlang is a language that is unparalleled in… parallelization and fault tolerance (can recover from errors). COD servers run on erlang. many phone networks use erlang to handle their connections.</font></li>
+</ul>
+</li>
+<li><span style="color: rgb(51, 51, 51);">Newcomers: Rust, Go, Swift, Crystal</span>
+<ul>
+<li><font color="#333333">Rust has mozillas backing. it’s a system language: an alternative to C with some nice tooling</font></li>
+<li><span style="color: rgb(51, 51, 51);">Go is a general purpose language backed by google. also great tooling.</span></li>
+<li><font color="#333333">Swift is backed by Apple. it’s used for iOS development along with Objective-C.</font></li>
+<li><span style="color: rgb(51, 51, 51);">Crystal is Ruby, but fast!</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</body></html>
