@@ -19,9 +19,9 @@
     * The community surrounding a language is important
  * Different programming languages foster different ways of thinking about problems
    * “[Programming languages] powerfully condition all our thinking about social problems and processes. Human beings … are very much at the mercy of the particular language which has become the medium of expression for their [codebase]” (Sapir…. paraphrased)
- * Examples
-    * Finding a path between two nodes
-    * Quicksort
+    * Examples
+       * Finding a path between two nodes
+       * Quicksort
 * Explanation of common language features/paradigms
  * Static vs Dynamic typing
     * Static: stalwart of many more traditional/enterprise languages, lengthier code but with more assurances about what your code represents
