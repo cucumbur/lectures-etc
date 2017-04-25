@@ -1,3 +1,5 @@
+(items in bold are considered more important and/or more likely to be covered)
+
 * **Game Architecture**
     * **Game Loop**
         * **Time step**
